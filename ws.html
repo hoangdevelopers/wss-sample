@@ -1,0 +1,26 @@
+<script>
+  var ws = new WebSocket('ws://localhost:40510');
+
+  ws.onopen = function () {
+      console.log('websocket is connected ...')
+      ws.send('connected')
+  }
+
+  ws.onmessage = function (ev) {
+      console.log(ev);
+  }
+  const sendMessage = () => {
+    ws.send(JSON.stringify({
+      message: "abc",
+      userId: 123,
+      sampleData: "xxsacsa"
+    }))
+  }
+</script>
+<h1>
+    Web Socket Example
+</h1>
+<p>
+    open console to see connection.
+</p>
+<button onclick="sendMessage()">sendMessage btn</button>
